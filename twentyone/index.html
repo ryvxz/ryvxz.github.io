@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 21st Monthsary Pooks!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>❤️ Happy 21st Monthsary Pooks! ❤️</h1>
+        <p>I love you! Goodluck po sa Board Exam!</p>
+        <a href="https://open.spotify.com/track/7gZ3kWNtIxFgxjsm5OTVMB?si=8e979a0ee1f84bbe" target="_blank" class="play-button">
+            ▶️ "214"
+        </a>
+        <div class="signature">mwamwamwamwmwamwamamawmawmawma</div>
+    </div>
+    
+    <script>
+        // Create floating hearts and flowers
+        function createHearts() {
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                
+                // Random position
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                
+                // Random size
+                const size = Math.random() * 20 + 10;
+                heart.style.width = size + 'px';
+                heart.style.height = size + 'px';
+                
+                // Random animation delay
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                
+                document.body.appendChild(heart);
+            }
+        }
+        
+        function createFlowers() {
+            for (let i = 0; i < 10; i++) {
+                const flower = document.createElement('div');
+                flower.classList.add('flower');
+                
+                // Random position
+                flower.style.left = Math.random() * 100 + 'vw';
+                flower.style.top = Math.random() * 100 + 'vh';
+                
+                const flowerCenter = document.createElement('div');
+                flowerCenter.classList.add('flower-center');
+                
+                // Create petals
+                for (let j = 1; j <= 5; j++) {
+                    const petal = document.createElement('div');
+                    petal.classList.add('petal', `petal${j}`);
+                    flowerCenter.appendChild(petal);
+                }
+                
+                flower.appendChild(flowerCenter);
+                document.body.appendChild(flower);
+                
+                // Random size
+                const size = Math.random() * 0.5 + 0.7;
+                flower.style.transform = `scale(${size})`;
+                
+                // Random colors for petals
+                const petals = flower.querySelectorAll('.petal');
+                const colors = ['#ff88cc', '#ffaadd', '#ff77aa', '#ff99bb', '#ff66cc'];
+                petals.forEach(petal => {
+                    petal.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                });
+                
+                // Animation
+                flower.style.animation = `float ${Math.random() * 4 + 6}s infinite ease-in-out`;
+                flower.style.animationDelay = Math.random() * 5 + 's';
+            }
+        }
+        
+        // Run on page load
+        window.onload = function() {
+            createHearts();
+            createFlowers();
+        };
+    </script>
+</body>
+</html>
