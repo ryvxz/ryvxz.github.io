@@ -45,12 +45,16 @@
                 <h2>📊 The Stats</h2>
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <p class="stat-label">Total Days</p>
-                        <p class="stat-number" id="totalDays">0</p>
+                    <p class="stat-label">Total Months</p>
+                    <p class="stat-number" id="totalMonths">0</p>
                     </div>
                     <div class="stat-card">
                         <p class="stat-label">Total Weeks</p>
                         <p class="stat-number" id="totalWeeks">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <p class="stat-label">Total Days</p>
+                        <p class="stat-number" id="totalDays">0</p>
                     </div>
                     <div class="stat-card">
                         <p class="stat-label">Total Hours</p>
@@ -59,6 +63,10 @@
                     <div class="stat-card">
                         <p class="stat-label">Total Minutes</p>
                         <p class="stat-number" id="totalMinutes">0</p>
+                    </div>
+                    <div class="stat-card">
+                    <p class="stat-label">Total Seconds</p>
+                    <p class="stat-number" id="totalSeconds">0</p>
                     </div>
                 </div>
             </div>
@@ -115,6 +123,12 @@
             document.getElementById('totalWeeks').textContent = totalWeeks.toLocaleString();
             document.getElementById('totalHours').textContent = hours.toLocaleString();
             document.getElementById('totalMinutes').textContent = minutes.toLocaleString();
+            // Calculate total months
+            const totalMonths = years * 12 + months;
+
+            // Update new stats
+            document.getElementById('totalMonths').textContent = totalMonths.toLocaleString();
+            document.getElementById('totalSeconds').textContent = seconds.toLocaleString();
         }
 
         // Update every second
