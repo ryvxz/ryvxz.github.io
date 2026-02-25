@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story ❤️</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="floating-hearts" id="hearts"></div>
+    
+    <div class="container">
+        <div class="glass-card">
+            <h1 class="title">How Long Have We Been Together?</h1>
+            <p class="subtitle">Since July 26, 2023 💕</p>
+            
+            <div class="countdown-grid">
+                <div class="time-box">
+                    <span class="number" id="years">0</span>
+                    <span class="label">Years</span>
+                </div>
+                <div class="time-box">
+                    <span class="number" id="months">0</span>
+                    <span class="label">Months</span>
+                </div>
+                <div class="time-box">
+                    <span class="number" id="days">0</span>
+                    <span class="label">Days</span>
+                </div>
+                <div class="time-box">
+                    <span class="number" id="hours">0</span>
+                    <span class="label">Hours</span>
+                </div>
+                <div class="time-box">
+                    <span class="number" id="minutes">0</span>
+                    <span class="label">Minutes</span>
+                </div>
+                <div class="time-box">
+                    <span class="number" id="seconds">0</span>
+                    <span class="label">Seconds</span>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <h2>📊 The Stats</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <p class="stat-label">Total Days</p>
+                        <p class="stat-number" id="totalDays">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <p class="stat-label">Total Weeks</p>
+                        <p class="stat-number" id="totalWeeks">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <p class="stat-label">Total Hours</p>
+                        <p class="stat-number" id="totalHours">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <p class="stat-label">Total Minutes</p>
+                        <p class="stat-number" id="totalMinutes">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="love-message">
+                <p id="message">Every second with you is a blessing ✨</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set your official date here
+        const startDate = new Date('July 26, 2023 00:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = now - startDate;
+
+            // Calculate time units
+            const seconds = Math.floor(difference / 1000);
+            const minutes = Math.floor(seconds / 60);
+            const hours = Math.floor(minutes / 60);
+            const totalDays = Math.floor(hours / 24);
+            const totalWeeks = Math.floor(totalDays / 7);
+
+            // Calculate years, months, days
+            const start = new Date('July 26, 2023');
+            const current = new Date();
+            
+            let years = current.getFullYear() - start.getFullYear();
+            let months = current.getMonth() - start.getMonth();
+            let days = current.getDate() - start.getDate();
+
+            if (days < 0) {
+                months--;
+                const prevMonth = new Date(current.getFullYear(), current.getMonth(), 0);
+                days += prevMonth.getDate();
+            }
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+
+            // Update main countdown
+            document.getElementById('years').textContent = years;
+            document.getElementById('months').textContent = months;
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours % 24;
+            document.getElementById('minutes').textContent = minutes % 60;
+            document.getElementById('seconds').textContent = seconds % 60;
+
+            // Update stats
+            document.getElementById('totalDays').textContent = totalDays.toLocaleString();
+            document.getElementById('totalWeeks').textContent = totalWeeks.toLocaleString();
+            document.getElementById('totalHours').textContent = hours.toLocaleString();
+            document.getElementById('totalMinutes').textContent = minutes.toLocaleString();
+        }
+
+        // Update every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+            heart.style.opacity = Math.random() * 0.5 + 0.3;
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            document.getElementById('hearts').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+
+        setInterval(createHeart, 800);
+
+        // Rotating love messages
+        const messages = [
+            "I love you so much pookeyk (◕‿◕)",
+            "Im so proud of you my RN",
+            "dodownload ko na resources sa genshin nyehehehe"
+        ];
+        let msgIndex = 0;
+        
+        setInterval(() => {
+            msgIndex = (msgIndex + 1) % messages.length;
+            document.getElementById('message').textContent = messages[msgIndex];
+        }, 5000);
+    </script>
+</body>
+</html>
